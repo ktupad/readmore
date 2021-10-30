@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8">
+<meta name="Description" content="Ktupad MVC Framework by wawan sismadi">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta http-equiv="Cache-Control" content="public" max-age="31536000">
+
+<link rel="shortcut icon" href="favicon.ico">
+<style>
+body {background-color: #2e597b;  margin:0 auto;  color: #000;  padding: 60px 10px 10px 10px;}
+hr { height: 6px; border: none; background: rgba(0, 0, 0, 0.1);}
+hr:last-child { margin-right: 60%;}
+hr.image { padding-bottom: 50%;}
+.page{ margin:0 auto;  width: 80%; background-color: #f2f2f2; margin: auto;  padding: 20px; }
+
+</style>
+
+<title>ktupad</title>
+</head>
+<body>
+<div id = "content" class = "page"></div>
+<script>
+more={
+gebi:function (i){ return  document.getElementById(i);},
+arr:[
+{nama:'satu',isi:'isi satu <hr><hr>'},
+{nama:'dua',isi:'isi dua <hr><hr>'},
+{nama:'tiga',isi:'isi tiga <hr><hr>'},
+],
+
+view:function (){
+data=this.arr;
+out='';
+for (i in data) {
+  out += '<div class = "row"> <h2>'+data[i].nama+'</h2>';
+  str=data[i].isi;
+  if(str.length>5){ str=str.substring(0, 5) + ' <span onclick="more.more(\''+i+'\')"> more...</span>' }
+   out+='<div id="content-'+i+'" >'+str+'</div>\
+   <hr class="image"><hr>';
+   out+='</div>';
+  }
+this.gebi('content').innerHTML=out;
+},
+
+more:function(i) {
+arr=this.arr;
+str=arr[i].isi;
+this.gebi('content-'+i).innerHTML = str;
+},
+
+}
+more.view();
+</script>
+</body>
+</html>
